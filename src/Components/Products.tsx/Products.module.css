@@ -1,0 +1,10 @@
+.products_wrapper{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.products_cointainer{
+    display: flex;
+    flex-direction: column;
+}

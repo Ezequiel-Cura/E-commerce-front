@@ -8,6 +8,8 @@ import {Route, Routes} from "react-router-dom"
 import Home from './Components/Home/Home';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import NavBar from './Components/NavBar/NavBar';
+import Products from './Components/Products.tsx/Products';
+import CreateProduct from './Components/CreateProduct/CreateProduct';
 
 
 
@@ -18,7 +20,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/Home' element={<Home/>}/>
-        <Route path=''/>
+        <Route path='/products' element={<Products/>}/>
+        <Route path='/createProduct' element={<CreateProduct/>}/>
         <Route path='*' element={<ErrorPage/>}/>
       </Routes>
     </>

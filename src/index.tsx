@@ -8,10 +8,14 @@ import { BrowserRouter } from 'react-router-dom';
 //REDUX
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import axios from 'axios';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:5000"
+
 
 root.render(
   <Provider store={store}>
