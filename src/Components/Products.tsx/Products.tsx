@@ -12,7 +12,7 @@ export default function Products() {
   useEffect(()=>{
     dispatch(getAllProducts())
   },[])
-
+  console.log(allProducts)
   return (
     <div>
       <h5>Products</h5>
@@ -26,10 +26,13 @@ export default function Products() {
             <span>Name: {p.name}</span>
             <span>Price: {p.product_price}</span>
             <span>Stock: {p.stock} </span>
-            <span>Presentation:{p.presentation} </span>
-            <Image cloudName={`${process.env.REACT_APP_CLOUD_NAME}`} publicId={p.product_image}>
-
+            <span>Presentation:{p.presentation} </span> 
+            <span>Categories: {p.categoris}</span>
+            <Image 
+              cloudName={`${process.env.REACT_APP_CLOUD_NAME}`} 
+              publicId={p.product_image}>
             </Image>
+
           </div>
         ))}
       </div>

@@ -10,6 +10,7 @@ import createProduct from "./Actions/createProduct";
 
 const initialState:Iproducts={
     status:"idle",
+    errors:"",
     Products: [
         {
         name:"",
@@ -49,8 +50,9 @@ const reducerSlice = createSlice({
         [createProduct.fulfilled]:(state)=>{
             state.status = "fulfilled"
         },
-        [createProduct.rejected]:(state)=>{
-            state.status = "failed"
+        [createProduct.rejected]:(state,{payload})=>{
+            state.status = "failed";
+            state.errors = payload
         }
         //--------
 

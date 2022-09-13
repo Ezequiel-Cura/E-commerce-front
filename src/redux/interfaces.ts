@@ -1,5 +1,6 @@
 export interface Iproducts{
     status:"idle" | "fulfilled" | "failed" | "loading",
+    errors:string,
     Products:[
         {
             product_id:string,
