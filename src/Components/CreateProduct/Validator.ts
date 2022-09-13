@@ -17,5 +17,9 @@ export function validate(data:formData){
     if(data.categories.length === 0){
         errors.categories = "Categories is required"
     }
+
+    if(data.product_price === 0){
+        errors.product_price = "Price is required"
+    }
     return errors
 }

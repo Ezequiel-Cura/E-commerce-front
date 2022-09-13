@@ -14,7 +14,7 @@ export default function Products() {
   },[])
   console.log(allProducts)
   return (
-    <div>
+    <div className={styles.product_component}>
       <h5>Products</h5>
       <Link to="/createProduct">
         <span>Create a product</span>
@@ -22,12 +22,12 @@ export default function Products() {
       <div className={styles.products_wrapper}>
         {allProducts.Products.map((p,i)=>(
           <div className={styles.products_cointainer} key={p.product_id}>
-            <span>#{p.product_id} </span>
             <span>Name: {p.name}</span>
             <span>Price: {p.product_price}</span>
             <span>Stock: {p.stock} </span>
             <span>Presentation:{p.presentation} </span> 
-            <span>Categories: {p.categoris}</span>
+            <span>Categories: {p.categories && p.categories.join("/")}</span>
+            <span>Variants: {p.variants && p.variants.join("/")}</span>
             <Image 
               cloudName={`${process.env.REACT_APP_CLOUD_NAME}`} 
               publicId={p.product_image}>

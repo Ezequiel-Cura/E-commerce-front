@@ -15,13 +15,20 @@ const NavBar:FC=()=> {
       <div className={styles.firstLayer}>
         <img src={Logo} alt="" />
         <h1>Rico y Sano a mano</h1>
-        <div>
-          <Link to="/profile">
-            <img src={userIcon} alt="user" />
-          </Link>
-          <Link to="/cart">
-            <img src={cartIcon} alt="cart" />          
-          </Link>
+        <div className={styles.link_nav}>
+          <div>
+            <ul className={styles.ul_menu}>
+              <img src={userIcon} alt="user" className={styles.profile_item}/>
+              <li><Link to="/">SignIn</Link></li>
+              
+            </ul>
+            
+          </div>
+          <div>
+            <Link to="/cart">
+              <img src={cartIcon} alt="cart" />          
+            </Link>
+          </div>
         </div>
       </div>
       

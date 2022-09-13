@@ -19,8 +19,9 @@ const initialState:Iproducts={
         product_image:"",
         product_price:0,
         presentation:"",
-        categoris:[],
-        out_of_stock:false
+        categories:[],
+        out_of_stock:false,
+        variants:[]
         }
     ]
 }

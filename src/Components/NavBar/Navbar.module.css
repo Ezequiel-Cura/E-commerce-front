@@ -25,3 +25,19 @@
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
 }
+.link_nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.ul_menu{
+    list-style: none;
+    cursor: pointer;
+}
+.ul_menu li{
+    display: none;
+    position: absolute;
+}
+.ul_menu:hover li{
+    display: block;
+}

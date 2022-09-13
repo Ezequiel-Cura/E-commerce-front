@@ -45,20 +45,23 @@ const CreateProduct = ()=>{
         // const imageid = await uploadImage(image)
         allFormData.categories_string = JSON.stringify(allFormData.categories)
         allFormData.product_image = image
+        allFormData.variants = JSON.stringify(variants)
         console.log("OBJECT",allFormData)
 
         const errors = validate(allFormData)
         console.log("ERRORS",errors)
         if(Object.keys(errors).length === 0){
             dispatch(createProduct(allFormData))
-            // setAllFormData({
-            //     name:"",
-            //     stock:0,
-            //     product_price:0,
-            //     presentation:"",
-            //     categories:[],
-            //     product_image:{}
-            // })
+            setAllFormData({
+                name:"",
+                stock:0,
+                product_price:0,
+                presentation:"",
+                categories:[],
+                product_image:{},
+                categories_string:"",
+                variants:""
+            })
         }else{
             console.log("No se hizo el envio")
         }
@@ -89,7 +92,7 @@ const CreateProduct = ()=>{
     const handleClickVariants = ()=>{
         if(variants?.includes(inputVariants.current.value) || inputVariants.current.value=== "")return 
         // setCategories([...categories,inputCategories.current.value])
-        setVariants([...variants,inputVariants.current.value])
+        setVariants([...variants || [],inputVariants.current.value])
         inputVariants.current.value = ""
         console.log(variants)
     }

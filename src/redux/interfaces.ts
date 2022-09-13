@@ -9,9 +9,9 @@ export interface Iproducts{
             product_image:string,
             product_price:number,
             presentation:string,
-            categoris: string[],
+            categories: string[],
             out_of_stock:boolean
-
+            variants:string [] 
         }
     ]
 }
