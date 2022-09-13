@@ -30,14 +30,36 @@
     flex-direction: row;
     align-items: center;
 }
+
 .ul_menu{
     list-style: none;
     cursor: pointer;
+    width: fit-content;
+    padding: 0;
+    position: relative;
 }
-.ul_menu li{
+.ul_menu .dropdown{
     display: none;
     position: absolute;
+
 }
-.ul_menu:hover li{
-    display: block;
+.ul_menu:hover div{
+    display: flex;
+}
+
+.dropdown{
+    background-color: wheat;
+    height: 70px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 40px;
+    border-radius: 10px;
+}
+
+.dropdown a{
+    text-decoration: none;
+    color: black;
 }

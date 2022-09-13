@@ -19,7 +19,9 @@ const NavBar:FC=()=> {
           <div>
             <ul className={styles.ul_menu}>
               <img src={userIcon} alt="user" className={styles.profile_item}/>
-              <li><Link to="/">SignIn</Link></li>
+              <div className={styles.dropdown}>
+                <li><Link to="/">SignIn</Link></li>
+              </div>
               
             </ul>
             
