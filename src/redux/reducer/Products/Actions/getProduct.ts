@@ -2,10 +2,10 @@ import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
-const getAllProducts: any = createAsyncThunk("product/getAllProducts",
-   async () => {
+const getProduct: any = createAsyncThunk("product/getProduct",
+   async (id) => {
     try {
-        const {data} = await axios.get("/Product/getAllProducts")
+        const {data} = await axios.get("/Product/getProduct/" + id)
         return data
     } catch (error:any) {
         return isRejectedWithValue(error.response.data)
@@ -13,4 +13,4 @@ const getAllProducts: any = createAsyncThunk("product/getAllProducts",
    }
 )
 
-export default getAllProducts;
+export default getProduct;

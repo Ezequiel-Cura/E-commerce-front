@@ -38,20 +38,23 @@ const CreateProduct = ()=>{
         variants:""
     })
     //REACT HOOK FORM
-   
-    
+    // if(productState.status === "failed")console.log("NO ENVIO NADA AL BACK")
+    let aksldjf = ""
+    console.log(aksldjf.length)
     const handleOnSubmit = async(e:any)=>{
         e.preventDefault()
         // const imageid = await uploadImage(image)
         allFormData.categories_string = JSON.stringify(allFormData.categories)
         allFormData.product_image = image
-        allFormData.variants = JSON.stringify(variants)
+        allFormData.variants = JSON.stringify(variants) || ""
         console.log("OBJECT",allFormData)
-
+        
         const errors = validate(allFormData)
         console.log("ERRORS",errors)
         if(Object.keys(errors).length === 0){
-            dispatch(createProduct(allFormData))
+            const res = await dispatch(createProduct(allFormData))
+            console.log(res.error.message)
+            if(res?.error?.message === "Rejected")return
             setAllFormData({
                 name:"",
                 stock:0,
@@ -62,6 +65,7 @@ const CreateProduct = ()=>{
                 categories_string:"",
                 variants:""
             })
+
         }else{
             console.log("No se hizo el envio")
         }

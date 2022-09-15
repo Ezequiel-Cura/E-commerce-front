@@ -10,6 +10,7 @@ export default function Products() {
   const allProducts = useAppSelector((state)=> state.Products)
 
   useEffect(()=>{
+    if(allProducts.Products.length > 1)return
     dispatch(getAllProducts())
   },[])
   console.log(allProducts)
@@ -22,6 +23,7 @@ export default function Products() {
       <div className={styles.products_wrapper}>
         {allProducts.Products.map((p,i)=>(
           <div className={styles.products_cointainer} key={p.product_id}>
+            <Link to={"product/" + p.product_id}></Link>
             <span>Name: {p.name}</span>
             <span>Price: {p.product_price}</span>
             <span>Stock: {p.stock} </span>

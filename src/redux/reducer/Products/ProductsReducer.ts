@@ -7,6 +7,7 @@ import { Iproducts } from "../../interfaces";
 //Async Actions
 import  getAllProducts  from "./Actions/getAllProducts";
 import createProduct from "./Actions/createProduct";
+import getProduct from "./Actions/getProduct"
 
 const initialState:Iproducts={
     status:"idle",
@@ -23,7 +24,18 @@ const initialState:Iproducts={
         out_of_stock:false,
         variants:[]
         }
-    ]
+    ],
+    oneProduct: {
+        name:"",
+        product_id:"",
+        stock:0,
+        product_image:"",
+        product_price:0,
+        presentation:"",
+        categories:[],
+        out_of_stock:false,
+        variants:[]
+    }
 }
 
 
@@ -54,9 +66,15 @@ const reducerSlice = createSlice({
         [createProduct.rejected]:(state,{payload})=>{
             state.status = "failed";
             state.errors = payload
-        }
+        },
         //--------
-
+        [getProduct.pending]: (state)=>{
+            state.status = "loading";
+        },
+        [getProduct.fulfilled]: (state,{payload})=>{
+            state.status = "fulfilled";
+            state.oneProduct = payload
+        }
 
     }
 })

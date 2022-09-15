@@ -13,5 +13,16 @@ export interface Iproducts{
             out_of_stock:boolean
             variants:string [] 
         }
-    ]
+    ],
+    oneProduct: {
+        name:"",
+        product_id:"",
+        stock:0,
+        product_image:"",
+        product_price:0,
+        presentation:"",
+        categories:[],
+        out_of_stock:false,
+        variants:[]
+    }
 }
