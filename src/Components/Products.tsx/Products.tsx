@@ -23,12 +23,13 @@ export default function Products() {
       <div className={styles.products_wrapper}>
         {allProducts.Products.map((p,i)=>(
           <div className={styles.products_cointainer} key={p.product_id}>
-            <Link to={"product/" + p.product_id}></Link>
-            <span>Name: {p.name}</span>
-            <span>Price: {p.product_price}</span>
-            <span>Stock: {p.stock} </span>
+            <Link to={"/product/" + p.product_id}>
+              <span>Name: {p.name}</span>
+            </Link>
+            {/* <span>Price: {p.product_price}</span>
+            <span>Stock: {p.stock} </span> */}
             <span>Presentation:{p.presentation} </span> 
-            <span>Categories: {p.categories && p.categories.join("/")}</span>
+            {/* <span>Categories: {p.categories && p.categories.join("/")}</span> */}
             <span>Variants: {p.variants && p.variants.join("/")}</span>
             <Image 
               cloudName={`${process.env.REACT_APP_CLOUD_NAME}`} 

@@ -74,8 +74,12 @@ const reducerSlice = createSlice({
         [getProduct.fulfilled]: (state,{payload})=>{
             state.status = "fulfilled";
             state.oneProduct = payload
-        }
+        },
+        [getProduct.rejected]:(state)=>{
+            state.status = "failed";
 
+        },
+        //-----------------
     }
 })
 

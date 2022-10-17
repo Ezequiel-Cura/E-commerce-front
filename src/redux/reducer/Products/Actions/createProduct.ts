@@ -6,7 +6,7 @@ const createProduct:any = createAsyncThunk("product/createProduct",
     async(product_obj,{rejectWithValue})=>{
         try {
             console.log("ACTION",product_obj)
-            const {data} = await axios.post("/Product/create",product_obj,{     
+            const {data} = await axios.post("/Product",product_obj,{     
                 headers: { 'content-type': 'multipart/form-data' }
             }
             )
