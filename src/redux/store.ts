@@ -2,10 +2,11 @@ import { configureStore,ThunkAction,Action,combineReducers } from "@reduxjs/tool
 
 //Reducers
 import Products from "./reducer/Products/ProductsReducer";
-
+import webPageReducer from "./reducer/webPage/webPageReducer";
 
 const reducer = combineReducers({
-    Products
+    Products,
+    webPageReducer
 })
 
 export const store = configureStore({

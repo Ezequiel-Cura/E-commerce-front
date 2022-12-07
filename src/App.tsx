@@ -8,7 +8,7 @@ import {Route, Routes} from "react-router-dom"
 import Home from './Components/Home/Home';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import NavBar from './Components/NavBar/NavBar';
-import Products from './Components/Products.tsx/Products';
+import Products from './Components/Products/Products';
 import CreateProduct from './Components/CreateProduct/CreateProduct';
 import ProductDetail from './Components/ProductDetail/ProductDetail';
 

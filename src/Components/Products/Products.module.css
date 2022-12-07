@@ -10,8 +10,6 @@
     grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
 }
 
-
-
 .products_cointainer{
     display: flex;
     flex-direction: column;

@@ -26,3 +26,13 @@ export interface Iproducts{
         variants:[]
     }
 }
+
+
+export interface IwebPage{
+    status:"idle" | "fulfilled" | "failed" | "loading",
+    errors:string,
+    webPageStatus:{
+        loginForm:boolean,
+        registerForm:boolean  
+    }
+}
