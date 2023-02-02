@@ -1,16 +1,19 @@
-import { configureStore,ThunkAction,Action,combineReducers } from "@reduxjs/toolkit";
+import { configureStore,ThunkAction,Action,combineReducers, getDefaultMiddleware } from "@reduxjs/toolkit";
 
 //Reducers
 import Products from "./reducer/Products/ProductsReducer";
 import webPageReducer from "./reducer/webPage/webPageReducer";
+import UserReducer from "./reducer/User/UserReducer";
 
 const reducer = combineReducers({
     Products,
-    webPageReducer
+    webPageReducer,
+    UserReducer
 })
 
 export const store = configureStore({
-    reducer
+    reducer,
+    middleware: (getDefaultMiddleware) => [...getDefaultMiddleware({immutableCheck: false})]
 })
 
 
@@ -20,5 +23,5 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,
   unknown,
-  Action<string>
+  Action<string>  
 >;

@@ -27,6 +27,7 @@
 .form input{
     margin: 20px;
 }
-.form span{
-    color: white;
+
+.errorMsg{
+    color: red;
 }

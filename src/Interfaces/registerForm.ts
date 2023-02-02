@@ -1,5 +1,6 @@
 export interface registerForm{
     name:string,
-    mail:string,
-    password:string
+    email:string,
+    password:string,
+    password_2:string
 }

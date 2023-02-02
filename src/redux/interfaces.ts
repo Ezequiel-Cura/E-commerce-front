@@ -36,3 +36,25 @@ export interface IwebPage{
         registerForm:boolean  
     }
 }
+
+
+export interface Iusers{
+    status:"idle" | "fulfilled" | "failed" | "loading",
+    errors:{
+        statusCode: number,
+        errorMsg:string
+    },
+    success:{
+        msg:string,
+        statusCode:number
+    },
+    user:{
+        name:string,
+        email:string,
+        password:string,
+        isAdmin:boolean,
+        img:string,
+        token:string
+    }
+}
+

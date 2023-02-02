@@ -11,19 +11,29 @@ import cartIcon from "../../multimedia/icons8-cart-32.png"
 import LoginForm from '../LoginForm/LoginForm'
 import RegisterForm from '../RegisterForm/RegisterForm'
 
-import { useAppDispatch } from '../../redux/Hooks'
+import { useAppDispatch, useAppSelector } from '../../redux/Hooks'
 
-
+import timerPopUps from '../../redux/reducer/User/Actions/timerPopUps'
 
 
 const NavBar:FC=()=> {
   const dispatch = useAppDispatch()
+  const {errors,success} = useAppSelector((state)=>state.UserReducer)
+  const {user} = useAppSelector((state)=>state.UserReducer)
+
+  
+  if(errors.errorMsg || success.msg){
+    setTimeout(()=>{
+      dispatch(timerPopUps(2000))
+    },5000)
+  }
+
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
     setOpen(false);
   };
   const handleToggle = () => {
-    setOpen(!open);
+    setOpen(true);
   };
   const[openRegister,setOpenRegister] = React.useState(false);
   const registerhandleClose = () => {
@@ -49,22 +59,58 @@ const NavBar:FC=()=> {
         </>
         :null
       }
+      {/* Error messages -----------------------------------*/}
+
+      {errors.errorMsg?.length > 0 ? 
+          <div className={styles.errors_div}>
+             <span> {errors.errorMsg}</span>
+          </div>
+        :  null
+      }
+
+      {/* Error messages -----------------------------------*/}
+
+
+      {/* Succes messages__________________________________________ */}
+        {success.msg?.length > 0 ? 
+            <div className={styles.success_div}>
+              <span>{success.msg}</span>
+            </div>  
+          :null
+        }
+      {/* Succes messages__________________________________________ */}
+
+
+
       <div className={styles.firstLayer}>
         <img src={Logo} alt="" />
         <h1>Rico y Sano a mano</h1>
         <div className={styles.link_nav}>
           <div>
-            <ul className={styles.ul_menu}>
-              <img src={userIcon} alt="user" className={styles.profile_item}/>
-              <div className={styles.dropdown_wrapper}>
-                <div className={styles.dropdown}>
-                  <button onClick={handleToggle}>Login</button>
-                </div>
-                <div className={styles.dropdown}>
-                  <button onClick={registerhandleToggle}>Register</button>
-                </div>
-              </div>
-            </ul>
+            {
+              user?.name?.length ? 
+                  <>
+                    <ul>
+                      <div>
+                        <Link to="/profile">
+                          <span>Profile</span>
+                        </Link>
+                      </div>
+                    </ul>
+                  </>
+                :
+                  <ul className={styles.ul_menu}>
+                    <img src={userIcon} alt="user" className={styles.profile_item}/>
+                    <div className={styles.dropdown_wrapper}>
+                      <div className={styles.dropdown}>
+                        <button onClick={handleToggle}>Login</button>
+                      </div>
+                      <div className={styles.dropdown}>
+                        <button onClick={registerhandleToggle}>Register</button>
+                      </div>
+                    </div>
+                  </ul>
+            }
             
           </div>
           <div>
