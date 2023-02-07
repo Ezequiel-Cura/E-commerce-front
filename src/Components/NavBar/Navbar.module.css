@@ -40,6 +40,9 @@
     flex-direction: column;
     z-index: 100;
 }
+.ul_menu img{
+    max-width: 50px;
+}
 
 .dropdown_wrapper{
     display: none;

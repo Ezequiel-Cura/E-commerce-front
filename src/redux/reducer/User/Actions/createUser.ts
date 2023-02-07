@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios from "../../../../api/axios";
 
 const createUser:any = createAsyncThunk("user/createUser",
     async(user_obj,{rejectWithValue})=>{

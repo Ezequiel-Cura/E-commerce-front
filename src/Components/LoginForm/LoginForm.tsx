@@ -15,7 +15,7 @@ export default function LoginForm() {
     const dispatch = useAppDispatch()
 
     const loginSchema = yup.object().shape({
-        mail: yup.string().email("Ese email no existe").required("Tu email es requerido"),
+        email: yup.string().email("Ese email no existe").required("Tu email es requerido"),
         password: yup.string().min(5,"Too short").required("Password required")
       })
 

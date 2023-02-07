@@ -5,7 +5,9 @@ import { Iusers } from "../../interfaces";
 
 //Actions
 import createUser from "./Actions/createUser";
+import getUserInfo from "./Actions/getUserInfo";
 import login from "./Actions/login";
+import logOut from "./Actions/logout";
 import timerPopUps from "./Actions/timerPopUps";
 
 
@@ -56,6 +58,7 @@ const reducerSlice = createSlice({
         [login.fulfilled]:(state,{payload})=>{
             state.status = "fulfilled"
             state.user = payload.user
+            localStorage.setItem("accessToken",payload.accessToken)
         },
         [login.rejected]:(state,{payload})=>{
             state.status = "failed"
@@ -73,7 +76,28 @@ const reducerSlice = createSlice({
             state.status = "failed";
             state.errors.errorMsg = payload
         },
-        
+        //-------------------------
+        [getUserInfo.pending]:(state)=>{
+            state.status = "loading";
+        },
+        [getUserInfo.fulfilled]:(state,{payload})=>{
+            state.status = "fulfilled"
+            state.user = payload.user
+        },
+        [getUserInfo.rejected]:(state,{payload})=>{
+            state.status = "failed";
+        },
+        //-------------------------
+        [logOut.pending]:(state)=>{
+            state.status = "loading";
+        },
+        [logOut.fulfilled]:(state,{payload})=>{
+            state.status = "fulfilled"
+            state.user = payload.user
+        },
+        [logOut.rejected]:(state,{payload})=>{
+            state.status = "failed";
+        },
     }
 
 })

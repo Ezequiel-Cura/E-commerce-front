@@ -1,6 +1,5 @@
 import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
-import axios from "axios";
-
+import axios from "../../../../api/axios";
 
 const createProduct:any = createAsyncThunk("product/createProduct",
     async(product_obj,{rejectWithValue})=>{

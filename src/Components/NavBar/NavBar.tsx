@@ -12,8 +12,9 @@ import LoginForm from '../LoginForm/LoginForm'
 import RegisterForm from '../RegisterForm/RegisterForm'
 
 import { useAppDispatch, useAppSelector } from '../../redux/Hooks'
-
+import {Image} from "cloudinary-react"
 import timerPopUps from '../../redux/reducer/User/Actions/timerPopUps'
+import logOut from '../../redux/reducer/User/Actions/logout'
 
 
 const NavBar:FC=()=> {
@@ -42,6 +43,11 @@ const NavBar:FC=()=> {
   const registerhandleToggle = () => {
     setOpenRegister(!open);
   };
+
+  const handleLogOut = ()=>{
+    dispatch(logOut(user.email))
+  }
+
   return (
     <div>
       { open ? 
@@ -92,9 +98,25 @@ const NavBar:FC=()=> {
                   <>
                     <ul>
                       <div>
-                        <Link to="/profile">
-                          <span>Profile</span>
-                        </Link>
+                        
+                        <ul className={styles.ul_menu}>
+                          <Image 
+                            cloudName={`${process.env.REACT_APP_CLOUD_NAME}`} 
+                            publicId={user.img}>
+                            
+                          </Image>
+                          {/* <img src={userIcon} alt="user" className={styles.profile_item}/> */}
+                          <div className={styles.dropdown_wrapper}>
+                            <div className={styles.dropdown}>
+                              <Link to="/profile">
+                                <button>Profile</button>
+                              </Link>
+                            </div>
+                            <div className={styles.dropdown}>
+                              <button onClick={()=>handleLogOut()}>Logout</button>
+                            </div>
+                          </div>
+                        </ul>
                       </div>
                     </ul>
                   </>
