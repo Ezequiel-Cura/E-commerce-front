@@ -15,6 +15,7 @@ import ProductDetail from './Components/ProductDetail/ProductDetail';
 import IsAllowed from './Utils/isAllowed';
 
 import UserPage from './Components/UserPage/UserPage';
+import Cart from './Components/Cart/Cart';
 
 function App() {
   
@@ -31,6 +32,7 @@ function App() {
 
         <Route element={<IsAllowed />}>
           <Route path='/profile' element={<UserPage/>}/>
+          <Route path="/cart" element={<Cart/>}/>
         </Route>
 
         <Route path='*' element={<ErrorPage/>}/>

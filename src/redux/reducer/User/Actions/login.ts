@@ -5,7 +5,9 @@ import axios from "../../../../api/axios";
 const login:any = createAsyncThunk("user/login",
     async(user_obj,{rejectWithValue})=>{
         try {
-            const {data} = await axios.post("/auth/login",user_obj)
+            const {data} = await axios.post("/auth/login",user_obj,{
+                withCredentials:true
+            })
             console.log(user_obj)
             console.log("data",data)
             return data

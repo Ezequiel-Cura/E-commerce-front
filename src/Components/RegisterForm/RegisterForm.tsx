@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect, FC} from 'react'
 import { registerForm } from '../../Interfaces/registerForm'
 import styles from "./RegisterForm.module.css"
 import { useAppDispatch } from '../../redux/Hooks'
@@ -8,7 +8,11 @@ import createUser from '../../redux/reducer/User/Actions/createUser'
 import {Formik, Form,Field,ErrorMessage} from "formik"
 import * as yup from "yup"
 
-export default function RegisterForm() {
+interface registerFormI{
+  setOpenRegister:Function
+}
+
+const RegisterForm:FC<registerFormI>=({setOpenRegister})=> {
   const dispatch = useAppDispatch()
   
   const registerSchema = yup.object().shape({
@@ -26,6 +30,7 @@ export default function RegisterForm() {
     const res = await dispatch(createUser(values))
     if(!res?.error?.message?.length){
       submitProps.resetForm()
+      setOpenRegister(false)
     }
     
     
@@ -63,3 +68,6 @@ export default function RegisterForm() {
     </div>
   )
 }
+
+
+export default RegisterForm

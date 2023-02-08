@@ -10,7 +10,9 @@ const getUserInfo:any = createAsyncThunk("user/getInfo",
         try {
         console.log("axhiosdafsaf")
 
-            const {data} = await axios.get("/user")
+            const {data} = await axios.get("/user",{
+                withCredentials:true
+            })
             console.log(user_obj)
             console.log("data",data)
             return data

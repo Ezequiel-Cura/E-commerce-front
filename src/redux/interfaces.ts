@@ -34,9 +34,15 @@ export interface IwebPage{
     webPageStatus:{
         loginForm:boolean,
         registerForm:boolean  
-    }
+    },
+    cart:Array<productStructure>
 }
-
+interface productStructure{
+    id:string,
+    name:string,
+    quantity:number,
+    img:string
+}
 
 export interface Iusers{
     status:"idle" | "fulfilled" | "failed" | "loading",
@@ -58,3 +64,9 @@ export interface Iusers{
     }
 }
 
+
+export interface productInCart {
+    id:string,
+    name:string,
+    img:string
+}

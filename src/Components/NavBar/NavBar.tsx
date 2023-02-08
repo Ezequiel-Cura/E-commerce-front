@@ -28,7 +28,6 @@ const NavBar:FC=()=> {
       dispatch(timerPopUps(2000))
     },5000)
   }
-
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
     setOpen(false);
@@ -36,6 +35,7 @@ const NavBar:FC=()=> {
   const handleToggle = () => {
     setOpen(true);
   };
+  
   const[openRegister,setOpenRegister] = React.useState(false);
   const registerhandleClose = () => {
     setOpenRegister(false);
@@ -43,10 +43,11 @@ const NavBar:FC=()=> {
   const registerhandleToggle = () => {
     setOpenRegister(!open);
   };
-
+  
   const handleLogOut = ()=>{
     dispatch(logOut(user.email))
   }
+  
 
   return (
     <div>
@@ -54,14 +55,14 @@ const NavBar:FC=()=> {
       <>
         <div onClick={handleClose} className={styles.backdrop}>
         </div>
-        <LoginForm/>
+        <LoginForm setOpen={setOpen}/>
       </>
       :null}
       {
         openRegister ? 
         <>
           <div onClick={registerhandleClose} className={styles.backdrop}></div>
-          <RegisterForm/>
+          <RegisterForm setOpenRegister={setOpenRegister}/>
         </>
         :null
       }
@@ -137,7 +138,9 @@ const NavBar:FC=()=> {
           </div>
           <div>
             <Link to="/cart">
-              <img src={cartIcon} alt="cart" />          
+              
+              <img src={cartIcon} alt="cart" /> 
+                       
             </Link>
           </div>
         </div>

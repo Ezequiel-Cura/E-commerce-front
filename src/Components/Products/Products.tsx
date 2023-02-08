@@ -4,16 +4,32 @@ import { useAppDispatch, useAppSelector } from '../../redux/Hooks'
 import getAllProducts from '../../redux/reducer/Products/Actions/getAllProducts'
 import {Image} from "cloudinary-react"
 import styles from "./Products.module.css"
+import { addProduct } from '../../redux/reducer/webPage/webPageReducer'
+import getUserInfo from '../../redux/reducer/User/Actions/getUserInfo';
+
 
 export default function Products() {
   const dispatch = useAppDispatch()
   const allProducts = useAppSelector((state)=> state.Products)
+  const user = useAppSelector((state)=> state.UserReducer.user)
+
 
   useEffect(()=>{
     if(allProducts.Products.length > 1)return
     dispatch(getAllProducts())
-  },[])
-  console.log(allProducts)
+    if(!user?.email){
+      console.log("hola")
+      dispatch(getUserInfo())
+    }
+  },[dispatch])
+
+  const handleClickAdd = (name:string,id:string,img:string)=>{
+    dispatch(addProduct({id,name,img}))
+  }
+
+
+
+  
   return (
     <div className={styles.product_component}>
       <h5>Products</h5>
@@ -35,7 +51,9 @@ export default function Products() {
               cloudName={`${process.env.REACT_APP_CLOUD_NAME}`} 
               publicId={p.product_image}>
             </Image>
-
+            <div>
+              <button disabled={user?.email ? false : true} onClick={()=>handleClickAdd(p.name,p.product_id,p.product_image)}>Add</button>
+            </div>
           </div>
         ))}
       </div>

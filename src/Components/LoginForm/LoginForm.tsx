@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect, FC} from 'react'
 import { useAppDispatch } from '../../redux/Hooks'
 import { loginForm } from '../../Interfaces/loginINterface'
 //CSS
@@ -10,8 +10,11 @@ import {Formik, Form,Field,ErrorMessage} from "formik"
 import * as yup from "yup"
 import login from '../../redux/reducer/User/Actions/login'
 
+interface loginFormI{
+    setOpen:Function
+}
 
-export default function LoginForm() {
+const LoginForm:FC<loginFormI> = ({setOpen})=> {
     const dispatch = useAppDispatch()
 
     const loginSchema = yup.object().shape({
@@ -26,6 +29,7 @@ export default function LoginForm() {
         
         if(!res?.error?.message?.length){
             submitProps.resetForm()
+            setOpen(false)
         }
         
       }
@@ -59,3 +63,6 @@ export default function LoginForm() {
          </div>
     )
 }
+
+
+export default LoginForm

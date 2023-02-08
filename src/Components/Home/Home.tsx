@@ -17,9 +17,6 @@ export default function Home() {
   
 
   useEffect(()=>{
-    console.log("adiosssssssss")
-    
-    
     if(!user?.email){
       console.log("hola")
       dispatch(getUserInfo())
