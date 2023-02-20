@@ -5,22 +5,18 @@ import refreshToken from "../redux/reducer/User/Actions/refreshToken";
 
 const BASE_URL = 'http://localhost:5000'
 
-
-
-
-export default axios.create({
+const axiosPriv = axios.create({
     baseURL:BASE_URL,
     headers:{'Content-Type': 'application/json'},
     withCredentials:true
 })
-// export const axiosPrivate = axios.create({
-//     baseURL:BASE_URL,
-//     headers:{'Content-Type': 'application/json'},
-//     withCredentials:true
-// })
 
-axios.interceptors.request.use(
+
+
+console.log("axiosF")
+axiosPriv.interceptors.request.use(
     (config:AxiosRequestConfig)=>{
+        console.log("dentro del intercept")
         config.headers = config.headers ?? {};
         
         if(!config?.headers['Authorization']){
@@ -28,21 +24,34 @@ axios.interceptors.request.use(
         }
         return config
     },(error)=>{
+        console.log(error)
         Promise.reject(error)
     }
 )
-
-
-axios.interceptors.response.use(
+    
+    
+axiosPriv.interceptors.response.use(
     response=>response,
     async(error)=>{
         const prevRequest = error?.config;
+        console.log(error?.response.status)
+        console.log("·SDFKALSDÑFJASJF")
+
         if(error?.response.status === 403 && !prevRequest?.sent){
             prevRequest.sent = true
-            const newAccessToken = refreshToken()
+            const newAccessToken = await refreshToken()
             prevRequest.headers['Authorization'] =`Bearer ${newAccessToken}`
             return axios(prevRequest)
         }
         return Promise.reject(error)
     }
 )
+
+  
+
+export default axiosPriv;
+    // export const axiosPrivate = axios.create({
+    //     baseURL:BASE_URL,
+    //     headers:{'Content-Type': 'application/json'},
+    //     withCredentials:true
+    // })

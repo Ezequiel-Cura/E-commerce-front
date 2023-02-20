@@ -37,7 +37,7 @@ export default function Products() {
         <span>Create a product</span>
       </Link>
       <div className={styles.products_wrapper}>
-        {allProducts.Products.map((p,i)=>(
+        {allProducts?.Products && allProducts?.Products.map((p,i)=>(
           <div className={styles.products_cointainer} key={p.product_id}>
             <Link to={"/product/" + p.product_id}>
               <span>Name: {p.name}</span>

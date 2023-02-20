@@ -1,11 +1,12 @@
 import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
-import axios from "../../../../api/axios";
+import axiosPriv from "../../../../api/axios";
+// import axios from "axios";
 
 
 const logOut:any = createAsyncThunk("user/logout",
     async(email,{rejectWithValue})=>{
         try {
-            const {data} = await axios.get("/auth/logout",{
+            const {data} = await axiosPriv.get("/auth/logout",{
                 withCredentials:true
             })
             localStorage.removeItem("accessToken")

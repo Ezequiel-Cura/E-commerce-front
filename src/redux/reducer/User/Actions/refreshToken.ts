@@ -1,12 +1,14 @@
 import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
-import axios from "../../../../api/axios";
+import axiosPriv from "../../../../api/axios";
+// import axios from "axios";
 
-// import { axiosPrivate } from "../../../../api/axios";
+
 
 const refreshToken:any = createAsyncThunk("user/refreshToken",
     async(refresh_token,{rejectWithValue})=>{
         try {
-            const {data} = await axios.get("/refresh",{
+            console.log("refresh Token action")
+            const {data} = await axiosPriv.get("/refresh",{
                 withCredentials:true
             })
 

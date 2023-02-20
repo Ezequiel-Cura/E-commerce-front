@@ -11,7 +11,8 @@ export interface Iproducts{
             presentation:string,
             categories: string[],
             out_of_stock:boolean
-            variants:string [] 
+            variants:string [] ,
+            feature:boolean
         }
     ],
     oneProduct: {

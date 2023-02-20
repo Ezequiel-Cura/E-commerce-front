@@ -116,6 +116,15 @@ const NavBar:FC=()=> {
                             <div className={styles.dropdown}>
                               <button onClick={()=>handleLogOut()}>Logout</button>
                             </div>
+                            {
+                              user.isAdmin ? 
+                                <div className={styles.dropdown}>
+                                  <Link to="/adminPage">
+                                    <button >AdminPage</button>                              
+                                  </Link>
+                                </div>
+                                : null
+                            }
                           </div>
                         </ul>
                       </div>

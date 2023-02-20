@@ -1,13 +1,15 @@
 import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
-import axios from "../../../../api/axios";
+// import axios from "../../../../api/axios";
+import axios from "axios";
 
 const createProduct:any = createAsyncThunk("product/createProduct",
     async(product_obj,{rejectWithValue})=>{
         try {
             console.log("ACTION",product_obj)
             const {data} = await axios.post("/Product",product_obj,{     
-                headers: { 'content-type': 'multipart/form-data' }
-            }
+                    headers: { 'content-type': 'multipart/form-data' },
+                    withCredentials:true
+                }
             )
 
         } catch (error:any) {

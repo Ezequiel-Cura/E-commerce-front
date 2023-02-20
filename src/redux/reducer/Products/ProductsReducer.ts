@@ -8,6 +8,7 @@ import { Iproducts } from "../../interfaces";
 import  getAllProducts  from "./Actions/getAllProducts";
 import createProduct from "./Actions/createProduct";
 import getProduct from "./Actions/getProduct"
+import updateProduct from "./Actions/updateProduct";
 
 const initialState:Iproducts={
     status:"idle",
@@ -22,7 +23,8 @@ const initialState:Iproducts={
         presentation:"",
         categories:[],
         out_of_stock:false,
-        variants:[]
+        variants:[],
+        feature:false
         }
     ],
     oneProduct: {
@@ -56,7 +58,7 @@ const reducerSlice = createSlice({
         [getAllProducts.rejected]:(state)=>{
             state.status= "failed"
         },
-        //--------
+        //-------------------------------------------
         [createProduct.pending]: (state)=>{
             state.status = "loading"
         },
@@ -67,7 +69,7 @@ const reducerSlice = createSlice({
             state.status = "failed";
             state.errors = payload
         },
-        //--------
+        //----------------------------------------
         [getProduct.pending]: (state)=>{
             state.status = "loading";
         },
@@ -79,7 +81,18 @@ const reducerSlice = createSlice({
             state.status = "failed";
 
         },
-        //-----------------
+        //---------------------------------------
+        [updateProduct.pending]: (state)=>{
+            state.status = "loading";
+        },
+        [updateProduct.fulfilled]: (state,{payload})=>{
+            state.status = "fulfilled";
+            state.oneProduct = payload
+        },
+        [updateProduct.rejected]:(state)=>{
+            state.status = "failed";
+        },
+        //-------------------------------------
     }
 })
 

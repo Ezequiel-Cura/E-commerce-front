@@ -1,10 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "../../../../api/axios";
+import axiosPriv from "../../../../api/axios";
+// import axios from "axios";
 
 const createUser:any = createAsyncThunk("user/createUser",
     async(user_obj,{rejectWithValue})=>{
         try {
-            const res:any = await axios.post("auth/register",user_obj)
+            const res:any = await axiosPriv.post("auth/register",user_obj)
             console.log(res.data)
             console.log("data",res)
             

@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:5000"
+// axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:5000"
 
 
 root.render(

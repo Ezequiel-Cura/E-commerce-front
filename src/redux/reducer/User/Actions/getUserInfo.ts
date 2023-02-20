@@ -1,20 +1,19 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios, {  } from "../../../../api/axios";
+import axiosPriv, {  } from "../../../../api/axios";
+// import axios from "axios";
 
 
 
 const getUserInfo:any = createAsyncThunk("user/getInfo",
     async(user_obj,{rejectWithValue})=>{
         
-        console.log("axhiosdafsaf")
+       
         try {
-        console.log("axhiosdafsaf")
-
-            const {data} = await axios.get("/user",{
+        
+            const {data} = await axiosPriv.get("/user",{
                 withCredentials:true
             })
-            console.log(user_obj)
-            console.log("data",data)
+            console.log(data)
             return data
         } catch (error:any) {
             console.log(error.response.data)

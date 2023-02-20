@@ -86,6 +86,7 @@ const reducerSlice = createSlice({
         },
         [getUserInfo.rejected]:(state,{payload})=>{
             state.status = "failed";
+            localStorage.removeItem("accessToken")
         },
         //-------------------------
         [logOut.pending]:(state)=>{
