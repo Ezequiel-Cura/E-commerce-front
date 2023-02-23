@@ -5,6 +5,7 @@ import styles from "./createProduct.module.css"
 
 import {ToastContainer,toast} from "react-toastify"
 import { validate } from "./Validator";
+import * as yup from "yup"
 
 export type formData ={
     name:string,
@@ -43,6 +44,7 @@ const CreateProduct = ()=>{
     console.log(aksldjf.length)
     const handleOnSubmit = async(e:any)=>{
         e.preventDefault()
+        validat()
         // const imageid = await uploadImage(image)
         allFormData.categories_string = JSON.stringify(allFormData.categories)
         allFormData.product_image = image
@@ -70,7 +72,24 @@ const CreateProduct = ()=>{
             console.log("No se hizo el envio")
         }
     }
-   
+    
+    const productSchema = yup.object().shape({
+        name:yup.string(),
+        presentation:yup.string(),
+        variants_string:yup.string(),
+        categories_strgin:yup.string(),
+        stock:yup.number(),
+        product_price:yup.number(),
+        categories:yup.array(),
+        product_image:yup.object().required()
+    })
+
+    const validat =async ()=>{
+        const productValidate = await productSchema.validate(allFormData)
+        console.log("VALUE YUP",productValidate)
+    }   
+
+
     
     const setFormDataState = (event:any)=>{
       

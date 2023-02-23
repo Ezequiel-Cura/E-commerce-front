@@ -9,6 +9,7 @@ import  getAllProducts  from "./Actions/getAllProducts";
 import createProduct from "./Actions/createProduct";
 import getProduct from "./Actions/getProduct"
 import updateProduct from "./Actions/updateProduct";
+import deleteProduct from "./Actions/deleteProduct";
 
 const initialState:Iproducts={
     status:"idle",
@@ -87,9 +88,20 @@ const reducerSlice = createSlice({
         },
         [updateProduct.fulfilled]: (state,{payload})=>{
             state.status = "fulfilled";
-            state.oneProduct = payload
+            
         },
         [updateProduct.rejected]:(state)=>{
+            state.status = "failed";
+        },
+        //-------------------------------------
+        [deleteProduct.pending]: (state)=>{
+            state.status = "loading";
+        },
+        [deleteProduct.fulfilled]: (state,{payload})=>{
+            state.status = "fulfilled";
+            
+        },
+        [deleteProduct.rejected]:(state)=>{
             state.status = "failed";
         },
         //-------------------------------------

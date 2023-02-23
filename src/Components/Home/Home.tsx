@@ -4,7 +4,7 @@ import getUserInfo from '../../redux/reducer/User/Actions/getUserInfo';
 import styles from "./Home.module.css"
 
 import { Link } from 'react-router-dom';
-import {Image} from "cloudinary-react"
+import {Image,Transformation} from "cloudinary-react"
 import getAllProducts from '../../redux/reducer/Products/Actions/getAllProducts';
 
 import {Swiper,SwiperSlide} from "swiper/react"
@@ -44,7 +44,7 @@ export default function Home() {
           <h5>Features Products</h5>    
           <div className={styles.p_wrapper}>
             <Swiper 
-              slidesPerView={5}
+              slidesPerView={1}
               spaceBetween={10}
               pagination={{
                 clickable:true
@@ -53,15 +53,19 @@ export default function Home() {
               className={styles.product_images_slider}
               breakpoints={
                 {
-                  320:{
+                  600:{
+                    slidesPerView:1
+                  },
+                  1000:{
                     slidesPerView:2
                   },
-                  480:{
+                  1300:{
                     slidesPerView:3
                   },
-                  640:{
+                  1600:{
                     slidesPerView:4
                   }
+                 
                 }
 
               }
@@ -75,6 +79,7 @@ export default function Home() {
                         <Image 
                           cloudName={`${process.env.REACT_APP_CLOUD_NAME}`} 
                           publicId={p.product_image}>
+                            <Transformation effect="background_removal" />
                         </Image>
                         <span>{p.name}</span>
                       {/* </Link> */}

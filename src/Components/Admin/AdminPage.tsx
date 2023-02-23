@@ -4,6 +4,7 @@ import styles from "./adminPage.module.css"
 import getAllProducts from "../../redux/reducer/Products/Actions/getAllProducts";
 import { Link } from "react-router-dom";
 import updateProduct from "../../redux/reducer/Products/Actions/updateProduct";
+import deleteProduct from "../../redux/reducer/Products/Actions/deleteProduct";
 
 const AdmingPage = ()=>{
     const dispatch = useAppDispatch()
@@ -31,7 +32,9 @@ const AdmingPage = ()=>{
         dispatch(updateProduct(obj))
     }
 
-
+    const handleDelete = (id:string)=>{
+        dispatch(deleteProduct(id))
+    }
     return (
         <div>
             <h3>Admin Page</h3>
@@ -39,7 +42,7 @@ const AdmingPage = ()=>{
 
             <div className={styles.table_wrapper}>
                 <h5><button onClick={()=>handleRefresh()}>Refresh Products</button></h5>
-                <h5><button>  Create Product  </button> </h5> 
+                <h5><button><Link to="/createProduct">Create Product </Link> </button> </h5> 
                 <table className={styles.table}>
                     <tbody>
                         <tr>
@@ -54,7 +57,7 @@ const AdmingPage = ()=>{
                                     <th><Link to={"/product/" + p.product_id}>{p.name}</Link></th>
                                     <th><input type="checkbox" checked={p.feature} onChange={()=>handleChangeFeature(p.product_id,p.feature)}/> </th>
                                     <th>Update</th>
-                                    <th>Eliminate </th>
+                                    <th><button onClick={()=>handleDelete(p.product_id)}>Eliminate</button></th>
                                 </tr>
                             ))
                         }

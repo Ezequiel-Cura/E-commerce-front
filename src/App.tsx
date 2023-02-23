@@ -28,13 +28,13 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/Home' element={<Home/>}/>
         <Route path='/products' element={<Products/>}/>
-        <Route path='/createProduct' element={<CreateProduct/>}/>
         <Route path="/product/:id" element={<ProductDetail/>}/>
 
         <Route element={<IsAllowed />}>
           <Route path='/profile' element={<UserPage/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path='/adminPage' element={<AdmingPage/>}/>
+          <Route path='/createProduct' element={<CreateProduct/>}/>
         </Route>
 
         <Route path='*' element={<ErrorPage/>}/>

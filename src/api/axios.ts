@@ -13,10 +13,10 @@ const axiosPriv = axios.create({
 
 
 
-console.log("axiosF")
+
 axiosPriv.interceptors.request.use(
     (config:AxiosRequestConfig)=>{
-        console.log("dentro del intercept")
+        
         config.headers = config.headers ?? {};
         
         if(!config?.headers['Authorization']){
@@ -34,8 +34,7 @@ axiosPriv.interceptors.response.use(
     response=>response,
     async(error)=>{
         const prevRequest = error?.config;
-        console.log(error?.response.status)
-        console.log("·SDFKALSDÑFJASJF")
+        
 
         if(error?.response.status === 403 && !prevRequest?.sent){
             prevRequest.sent = true

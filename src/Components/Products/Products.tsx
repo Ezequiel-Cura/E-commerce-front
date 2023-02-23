@@ -33,9 +33,11 @@ export default function Products() {
   return (
     <div className={styles.product_component}>
       <h5>Products</h5>
-      <Link to="/createProduct">
-        <span>Create a product</span>
-      </Link>
+      <div>
+        <div>Categories</div>
+        <div>A-Z</div>
+        <div></div>
+      </div>
       <div className={styles.products_wrapper}>
         {allProducts?.Products && allProducts?.Products.map((p,i)=>(
           <div className={styles.products_cointainer} key={p.product_id}>
