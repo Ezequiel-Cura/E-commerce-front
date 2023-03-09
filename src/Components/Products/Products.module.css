@@ -21,3 +21,24 @@
     object-fit: cover;
     /* background-size: cover; */
 }
+
+.btn_add{
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+.filter_cointainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.filter_items{
+    margin: 10px;
+}

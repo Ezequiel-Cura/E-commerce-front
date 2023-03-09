@@ -51,7 +51,7 @@ const reducerSlice = createSlice({
             let foundIndex = state.cart.findIndex(c=> c.id === action.payload.id)
 
             if(state.cart[foundIndex].quantity === 0){
-                state.cart.filter((c)=>{
+                state.cart = state.cart.filter((c)=>{
                     if(  c.id !== action.payload.id) return true
                     else return false
                 })

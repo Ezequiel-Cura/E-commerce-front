@@ -1,7 +1,21 @@
 export interface Iproducts{
     status:"idle" | "fulfilled" | "failed" | "loading",
     errors:string,
-    Products:[
+    productsArray:[
+        {
+            product_id:string,
+            name:string,
+            stock:number,
+            product_image:string,
+            product_price:number,
+            presentation:string,
+            categories: string[],
+            out_of_stock:boolean
+            variants:string [] ,
+            feature:boolean
+        }
+    ],
+    allProducts:[
         {
             product_id:string,
             name:string,
@@ -27,6 +41,24 @@ export interface Iproducts{
         variants:[]
     }
 }
+
+export interface products{
+    
+        
+            product_id:string,
+            name:string,
+            stock:number,
+            product_image:string,
+            product_price:number,
+            presentation:string,
+            categories: string[],
+            out_of_stock:boolean
+            variants:string [] ,
+            feature:boolean
+        
+    
+}
+
 
 
 export interface IwebPage{

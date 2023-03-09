@@ -8,12 +8,12 @@ import deleteProduct from "../../redux/reducer/Products/Actions/deleteProduct";
 
 const AdmingPage = ()=>{
     const dispatch = useAppDispatch()
-    const {Products} = useAppSelector(state => state.Products)
+    const {productsArray} = useAppSelector(state => state.Products)
     const {user} = useAppSelector(state => state.UserReducer)
 
     useEffect(()=>{
         
-        if(Products.length === 1){
+        if(productsArray.length === 1){
             dispatch(getAllProducts())
         }
     },[])
@@ -51,7 +51,7 @@ const AdmingPage = ()=>{
                             <th>Feature</th>
                         </tr>
                         {
-                            Products.map((p,i)=>(
+                            productsArray.map((p,i)=>(
                                 <tr key={i}  className={styles.tr}>
                                     <th>{p.product_id}</th>
                                     <th><Link to={"/product/" + p.product_id}>{p.name}</Link></th>

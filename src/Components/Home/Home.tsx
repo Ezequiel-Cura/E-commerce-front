@@ -2,6 +2,8 @@ import React,{useEffect} from 'react'
 import { useAppDispatch,useAppSelector } from '../../redux/Hooks';
 import getUserInfo from '../../redux/reducer/User/Actions/getUserInfo';
 import styles from "./Home.module.css"
+import Products from '../Products/Products';
+
 
 import { Link } from 'react-router-dom';
 import {Image,Transformation} from "cloudinary-react"
@@ -18,16 +20,16 @@ export default function Home() {
 
   const dispatch = useAppDispatch()
   const user = useAppSelector(state=> state.UserReducer.user)
-  const products = useAppSelector(state=> state.Products.Products)
+  const {productsArray,allProducts} = useAppSelector(state=> state.Products)
 
-  const featureProducts = products.filter((p)=> p.feature )
+  const featureProducts = allProducts.filter((p)=> p.feature )
   console.log(featureProducts)
   useEffect(()=>{
     if(!user?.email){
       console.log("hola")
       dispatch(getUserInfo())
     }
-    if(products.length === 1){
+    if(Products.length === 1){
       dispatch(getAllProducts())
     }
   },[dispatch])
@@ -91,6 +93,7 @@ export default function Home() {
             </Swiper>
           
           </div>  
+          
         </div>
     </div>
   )

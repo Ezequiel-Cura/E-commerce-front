@@ -50,7 +50,7 @@ const NavBar:FC=()=> {
   
 
   return (
-    <div>
+    <div className={styles.navBar}>
       { open ? 
       <>
         <div onClick={handleClose} className={styles.backdrop}>

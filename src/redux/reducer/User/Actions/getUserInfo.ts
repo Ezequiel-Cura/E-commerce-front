@@ -13,7 +13,7 @@ const getUserInfo:any = createAsyncThunk("user/getInfo",
             const {data} = await axiosPriv.get("/user",{
                 withCredentials:true
             })
-            console.log(data)
+            
             return data
         } catch (error:any) {
             console.log(error.response.data)
