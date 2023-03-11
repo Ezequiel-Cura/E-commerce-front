@@ -10,7 +10,6 @@ import createProduct from "./Actions/createProduct";
 import getProduct from "./Actions/getProduct"
 import updateProduct from "./Actions/updateProduct";
 import deleteProduct from "./Actions/deleteProduct";
-import { STATUS_CODES } from "http";
 import getProductsByCategory from "./Actions/getProductsByCategory";
 
 

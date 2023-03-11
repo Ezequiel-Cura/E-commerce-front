@@ -16,7 +16,6 @@ const getUserInfo:any = createAsyncThunk("user/getInfo",
             
             return data
         } catch (error:any) {
-            console.log(error.response.data)
             return rejectWithValue(error.response.data)
         }
     }

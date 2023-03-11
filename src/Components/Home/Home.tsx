@@ -23,10 +23,9 @@ export default function Home() {
   const {productsArray,allProducts} = useAppSelector(state=> state.Products)
 
   const featureProducts = allProducts.filter((p)=> p.feature )
-  console.log(featureProducts)
+ 
   useEffect(()=>{
     if(!user?.email){
-      console.log("hola")
       dispatch(getUserInfo())
     }
     if(allProducts.length === 1){
