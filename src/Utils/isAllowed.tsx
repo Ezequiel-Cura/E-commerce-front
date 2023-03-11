@@ -7,7 +7,7 @@ const IsAllowed = ()=>{
     if(user?.name){
         return <Outlet/>
     }else{
-        return <Navigate to={"/Home"}  />
+        return <Navigate to={"/Home"}   />
     }
 
 

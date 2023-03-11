@@ -16,7 +16,7 @@ const Cart = ()=>{
         dispatch(addProductQuantity({id}))
     }
 
-    const handleDecuctQuantity = (id:string)=>{
+    const handleDeductQuantity = (id:string)=>{
         
         dispatch(deductProductQuantity({id}))
     }
@@ -29,7 +29,7 @@ const Cart = ()=>{
                     <div key={i}>
                         <span>Id:{c.id}</span>
                         <span>Name:{c.name}</span>
-                        <span>Quantity:{c.quantity} <button onClick={()=>handleAddQuantity(c.id) }>+</button><button onClick={()=>handleDecuctQuantity(c.id) }>-</button></span>
+                        <span>Quantity:{c.quantity} <button onClick={()=>handleAddQuantity(c.id) }>+</button><button onClick={()=>handleDeductQuantity(c.id) }>-</button></span>
                     </div>
                 ))
             }

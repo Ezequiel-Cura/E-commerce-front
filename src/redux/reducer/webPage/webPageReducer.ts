@@ -41,22 +41,30 @@ const reducerSlice = createSlice({
               if(  c.id !== action.payload.id) return true
               else return false
             })
+            localStorage.setItem("cart",JSON.stringify(state.cart))
+
         },
         addProductQuantity:(state,action:PayloadAction<{id:string}>)=>{
             let foundIndex = state.cart.findIndex(c=> c.id === action.payload.id)
             state.cart[foundIndex].quantity += 1
+            localStorage.setItem("cart",JSON.stringify(state.cart))
+
         },
         deductProductQuantity:(state,action:PayloadAction<{id:string}>)=>{
             
             let foundIndex = state.cart.findIndex(c=> c.id === action.payload.id)
 
-            if(state.cart[foundIndex].quantity === 0){
+            if(state.cart[foundIndex].quantity === 1){
                 state.cart = state.cart.filter((c)=>{
                     if(  c.id !== action.payload.id) return true
                     else return false
                 })
+                localStorage.setItem("cart",JSON.stringify(state.cart))
+
             }else{
                 state.cart[foundIndex].quantity -= 1
+                localStorage.setItem("cart",JSON.stringify(state.cart))
+
             }
         },
         getCartLocalStorage:(state)=>{

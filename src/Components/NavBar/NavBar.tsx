@@ -110,7 +110,7 @@ const NavBar:FC=()=> {
                           <div className={styles.dropdown_wrapper}>
                             <div className={styles.dropdown}>
                               <Link to="/profile">
-                                <button>Profile</button>
+                                <button>Perfil</button>
                               </Link>
                             </div>
                             <div className={styles.dropdown}>
@@ -138,7 +138,7 @@ const NavBar:FC=()=> {
                         <button onClick={handleToggle}>Login</button>
                       </div>
                       <div className={styles.dropdown}>
-                        <button onClick={registerhandleToggle}>Register</button>
+                        <button onClick={registerhandleToggle}>Registrarse</button>
                       </div>
                     </div>
                   </ul>
@@ -160,7 +160,7 @@ const NavBar:FC=()=> {
           <span>Home</span>
         </Link>
         <Link to="/products">
-          <span>Products</span>
+          <span>Productos</span>
         </Link>
         <Link to="promotions">
           <span>Promociones</span>

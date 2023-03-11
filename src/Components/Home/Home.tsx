@@ -29,7 +29,8 @@ export default function Home() {
       console.log("hola")
       dispatch(getUserInfo())
     }
-    if(Products.length === 1){
+    if(allProducts.length === 1){
+
       dispatch(getAllProducts())
     }
   },[dispatch])
@@ -38,12 +39,12 @@ export default function Home() {
   return (
     <div>
         
-        <h1>Home</h1>
-        <div>
+        
+        {/* <div>
           Novedades
-        </div>
+        </div> */}
         <div>
-          <h5>Features Products</h5>    
+          <h3>Productos Destacados </h3>    
           <div className={styles.p_wrapper}>
             <Swiper 
               slidesPerView={1}

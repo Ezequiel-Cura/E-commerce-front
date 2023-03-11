@@ -1,34 +1,8 @@
 export interface Iproducts{
     status:"idle" | "fulfilled" | "failed" | "loading",
     errors:string,
-    productsArray:[
-        {
-            product_id:string,
-            name:string,
-            stock:number,
-            product_image:string,
-            product_price:number,
-            presentation:string,
-            categories: string[],
-            out_of_stock:boolean
-            variants:string [] ,
-            feature:boolean
-        }
-    ],
-    allProducts:[
-        {
-            product_id:string,
-            name:string,
-            stock:number,
-            product_image:string,
-            product_price:number,
-            presentation:string,
-            categories: string[],
-            out_of_stock:boolean
-            variants:string [] ,
-            feature:boolean
-        }
-    ],
+    productsArray:products[],
+    allProducts:products[],
     oneProduct: {
         name:"",
         product_id:"",
@@ -42,20 +16,17 @@ export interface Iproducts{
     }
 }
 
-export interface products{
-    
-        
-            product_id:string,
-            name:string,
-            stock:number,
-            product_image:string,
-            product_price:number,
-            presentation:string,
-            categories: string[],
-            out_of_stock:boolean
-            variants:string [] ,
-            feature:boolean
-        
+export interface products{           
+    product_id:string,
+    name:string,
+    stock:number,
+    product_image:string,
+    product_price:number,
+    presentation:string,
+    categories: string[],
+    out_of_stock:boolean
+    variants:string [] ,
+    feature:boolean       
     
 }
 

@@ -3,7 +3,9 @@
 }
 
 .products_wrapper{
-    margin-top: 20px;
+    
+    margin: 0 20%;
+    margin-bottom: 50px;
     justify-items: center;
     display: grid;
     gap: 1rem;
@@ -13,6 +15,8 @@
 .products_cointainer{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    
 }
 
 .products_cointainer img{
@@ -23,7 +27,18 @@
 }
 
 .btn_add{
-    width: 100%;
+    width: 300px;
+    background-color: #f8b03b;
+    color: black;
+    /* border: black 1px solid; */
+    border: none;
+    padding: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.btn_add:hover{
+    background-color: #b17c28;
+    cursor: pointer;
 }
 
 

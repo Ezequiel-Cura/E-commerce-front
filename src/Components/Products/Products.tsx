@@ -4,22 +4,21 @@ import { useAppDispatch, useAppSelector } from '../../redux/Hooks'
 import getAllProducts from '../../redux/reducer/Products/Actions/getAllProducts'
 import {Image} from "cloudinary-react"
 import styles from "./Products.module.css"
-import { addProduct } from '../../redux/reducer/webPage/webPageReducer'
+import { addProduct, getCartLocalStorage,addProductQuantity,deductProductQuantity } from '../../redux/reducer/webPage/webPageReducer'
 import getUserInfo from '../../redux/reducer/User/Actions/getUserInfo';
 import { orderAZ, orderByCategory, orderZA,searchProduct } from '../../redux/reducer/Products/ProductsReducer'
-import getProductsByCategory from '../../redux/reducer/Products/Actions/getProductsByCategory'
 
-interface cat2{
-  name:string
-}
+
 
 export default function Products() {
   const dispatch = useAppDispatch()
   const {allProducts,productsArray} = useAppSelector((state)=> state.Products)
   const user = useAppSelector((state)=> state.UserReducer.user)
-  
+  const cart = useAppSelector(state=>state.webPageReducer.cart)
   const [categorie,setCategories]= useState(Array<string>)
-  
+  const [cartIds,setCartIds] = useState(Array<string>)
+
+
   let categories:Array<string> = [];
   function getCategories ():Array<string>{
     if(allProducts.length !== 1){
@@ -30,22 +29,35 @@ export default function Products() {
     }else{
       return []
     }
-    
+  }
+  let cartIdsArray:Array<string> = []
+ 
+  function getCartIds():Array<string>{
+    if(cart.length !== 1){
+      cart.map((c)=>cartIdsArray= [...cartIdsArray,c.id])
+      setCartIds(cartIdsArray)
+      return cartIdsArray
+    }else{
+      return []
+    }
   }
   
-
   useEffect(()=>{
     if(productsArray.length > 1)return
-    dispatch(getAllProducts())
+      dispatch(getAllProducts())
     if(!user?.email){
       dispatch(getUserInfo())
+      dispatch(getCartLocalStorage())
     }
+    
+    
     
   },[dispatch])
   
   useEffect(()=>{    
     getCategories()
-  },[allProducts,dispatch])
+    getCartIds()
+  },[allProducts,dispatch,cart])
 
   const handleClickAdd = (name:string,id:string,img:string)=>{
     dispatch(addProduct({id,name,img}))
@@ -64,22 +76,32 @@ export default function Products() {
 
   const handleCategory = (e:React.ChangeEvent<HTMLInputElement>)=>{
     e.preventDefault()
-    // dispatch(orderByCategory({category: e.target?.value}))
-    dispatch(getProductsByCategory(e.target.value))
+    dispatch(orderByCategory({category: e.target?.value}))
+    // dispatch(getProductsByCategory(e.target.value))
   }
 
   const handleSearch = (e:React.ChangeEvent<HTMLInputElement>)=>{
     e.preventDefault()
-    searchProduct(e.target.value)
+    dispatch(searchProduct(e.target.value))
   }
+  const handleAddQuantity = (id:string)=>{
+      
+        
+    dispatch(addProductQuantity({id}))
+}
+
+const handleDeductQuantity = (id:string)=>{
+    
+    dispatch(deductProductQuantity({id}))
+}
 
 
   return (
     <div className={styles.product_component}>
       <div className={styles.filter_cointainer}>
-               <div className={styles.filter_items}>Categories</div>
+               <div className={styles.filter_items}>Categorias</div>
         <select name="Category"  className={styles.filter_items} onChange={(e:any)=>handleCategory(e)}>
-          <option value="default">default</option>
+          <option value="default">Todas</option>
           {
             categorie?.length > 0 ?  categorie.map(c=>(
               <option value={c} key={c}>{c}</option>
@@ -92,12 +114,12 @@ export default function Products() {
                  <div className={styles.filter_items}>A-Z</div>
         <select name="Alphabety" id="" className={styles.filter_items} onChange={(e:any)=>handleChangeAZ(e)}>
           <option value="default">order</option>
-          <option value="A-Z">Asc</option>
-          <option value="Z-A">Desc</option>
+          <option value="A-Z">A-Z</option>
+          <option value="Z-A">Z-A</option>
         </select>
 
         <div>
-          <span>Search:</span>
+          <span>Búsqueda:</span>
           <input type="text" onChange={(e)=>{
               handleSearch(e)
               console.log("hola")
@@ -107,20 +129,34 @@ export default function Products() {
       <div className={styles.products_wrapper}>
         {productsArray && productsArray.map((p,i)=>(
           <div className={styles.products_cointainer} key={p.product_id}>
-            <Link to={"/product/" + p.product_id}>
-              <span>Name: {p.name}</span>
+            <Link to={"/product/" + p.product_id}>              
+              <span>{p.name}</span>
             </Link>
             {/* <span>Price: {p.product_price}</span>
             <span>Stock: {p.stock} </span> */}
-            <span>Presentation:{p.presentation} </span> 
-            <span>Categories: {p.categories && p.categories.join(" - ")}</span>
+            <span>Presentacion:{p.presentation} </span> 
+            <span>Categorias: {p.categories && p.categories.join(" - ")}</span>
             {/* <span>Variants: {p.variants && p.variants.join("/")}</span> */}
             <Image 
               cloudName={`${process.env.REACT_APP_CLOUD_NAME}`} 
               publicId={p.product_image}>
             </Image>
             <div>
-              <button disabled={user?.email ? false : true} onClick={()=>handleClickAdd(p.name,p.product_id,p.product_image)} className={styles.btn_add}>Add</button>
+                            
+              {
+                cartIds.includes(p.product_id) ? (
+                  <div key={p.product_id}>
+                      <button onClick={()=>handleDeductQuantity(p.product_id)}>-</button>
+                      <span>{cart.find(c => p.product_id === c.id)?.quantity}</span>
+                    <button onClick={()=>handleAddQuantity(p.product_id)}>+</button>
+                  </div>
+                )
+                :(
+                  <button key={p.product_id} disabled={user?.email ? false : true} onClick={()=>handleClickAdd(p.name,p.product_id,p.product_image)} className={styles.btn_add}>Agregar</button>
+                )
+                
+
+              }
             </div>
           </div>
         ))}
@@ -128,3 +164,23 @@ export default function Products() {
     </div>
   )
 }
+
+// user.name.length ?
+//   cart && cart.map((c,i)=>{
+//     console.log("IDS",c.id + "===" + p.product_id)
+    
+//     if(c.id === p.product_id){
+//       return(
+//         <div key={c.id}>
+//           <button>-</button>
+//           <span>{c.quantity}</span>
+//           <button>+</button>
+//         </div>
+//       )
+//     }else{
+//       return(
+//         <button key={c.id} disabled={user?.email ? false : true} onClick={()=>handleClickAdd(p.name,p.product_id,p.product_image)} className={styles.btn_add}>Agregar</button>
+//       )
+//     }
+//   })
+// :null

@@ -82,19 +82,18 @@ const reducerSlice = createSlice({
         orderByCategory:(state,action:PayloadAction<{category:string}>)=>{
             if(action.payload.category === "default"){
                 //TENGO QUE AGREGAR EN EL INITIAL STATE OTRO ARRAY DE TODOS LOS PRODUCTOS POR SI QUIEREN VOLVER AL ORDEN DEFAULT
-            }else{
-                
-                let array = state.productsArray.filter((p)=>p.categories.includes(action.payload.category)) 
-                console.log(JSON.stringify(array))
-                state.productsArray.filter((p)=>p.categories.includes(action.payload.category)) 
+                state.productsArray = state.allProducts
+            }else{                                
+                state.productsArray = state.allProducts.filter((p)=>p.categories.includes(action.payload.category)) 
             }
         },
         searchProduct:(state,action:PayloadAction<string>)=>{
-            state.productsArray.filter(p=>p.name.includes(action.payload))
+            state.productsArray = state.allProducts.filter(p=>p.name.includes(action.payload))
         }
     },
     extraReducers:{
         [getAllProducts.pending]: (state)=>{
+
             state.status = "loading";
         },
         [getAllProducts.fulfilled]: (state,{payload})=>{

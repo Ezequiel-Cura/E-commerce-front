@@ -8,6 +8,7 @@ import {Route, Routes} from "react-router-dom"
 import Home from './Components/Home/Home';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import NavBar from './Components/NavBar/NavBar';
+import Footer from './Components/Footer/Footer';
 import Products from './Components/Products/Products';
 import CreateProduct from './Components/CreateProduct/CreateProduct';
 import ProductDetail from './Components/ProductDetail/ProductDetail';
@@ -39,6 +40,7 @@ function App() {
 
         <Route path='*' element={<ErrorPage/>}/>
       </Routes>
+      <Footer/>
     </>
     
   );
