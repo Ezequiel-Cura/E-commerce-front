@@ -122,7 +122,7 @@ const handleDeductQuantity = (id:string)=>{
           <span>Búsqueda:</span>
           <input type="text" onChange={(e)=>{
               handleSearch(e)
-              console.log("hola")
+              
             }}/>
         </div>
       </div>
@@ -144,6 +144,7 @@ const handleDeductQuantity = (id:string)=>{
             <div>
                             
               {
+                user?.email.length ? 
                 cartIds.includes(p.product_id) ? (
                   <div key={p.product_id}>
                       <button onClick={()=>handleDeductQuantity(p.product_id)}>-</button>
@@ -154,7 +155,7 @@ const handleDeductQuantity = (id:string)=>{
                 :(
                   <button key={p.product_id} disabled={user?.email ? false : true} onClick={()=>handleClickAdd(p.name,p.product_id,p.product_image)} className={styles.btn_add}>Agregar</button>
                 )
-                
+                :null
 
               }
             </div>

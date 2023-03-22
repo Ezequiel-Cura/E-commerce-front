@@ -87,7 +87,7 @@ const reducerSlice = createSlice({
             }
         },
         searchProduct:(state,action:PayloadAction<string>)=>{
-            state.productsArray = state.allProducts.filter(p=>p.name.includes(action.payload))
+            state.productsArray = state.allProducts.filter(p=>p.name.toLowerCase().includes(action.payload.toLowerCase()))
         }
     },
     extraReducers:{
