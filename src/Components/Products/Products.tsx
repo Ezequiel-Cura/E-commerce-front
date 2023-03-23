@@ -127,7 +127,8 @@ const handleDeductQuantity = (id:string)=>{
         </div>
       </div>
       <div className={styles.products_wrapper}>
-        {productsArray && productsArray?.map((p,i)=>(
+
+        {productsArray?.length ? productsArray?.map((p,i)=>(
           <div className={styles.products_cointainer} key={p.product_id}>
             <Link to={"/product/" + p.product_id}>              
               <span>{p.name}</span>
@@ -160,7 +161,10 @@ const handleDeductQuantity = (id:string)=>{
               }
             </div>
           </div>
-        ))}
+        ))
+        : (<h5>Products not found</h5>)
+      
+      }
       </div>
     </div>
   )
