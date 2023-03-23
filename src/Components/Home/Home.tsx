@@ -20,7 +20,7 @@ export default function Home() {
 
   const dispatch = useAppDispatch()
   const user = useAppSelector(state=> state.UserReducer.user)
-  const {productsArray,allProducts} = useAppSelector(state=> state.Products)
+  const {allProducts} = useAppSelector(state=> state.Products)
 
   const featureProducts = allProducts && allProducts?.filter((p)=> p.feature )
  

@@ -21,6 +21,7 @@ export default function Products() {
 
   let categories:Array<string> = [];
   function getCategories ():Array<string>{
+    console.log("1 - getCategories function")
     if(allProducts?.length !== 1){
       allProducts.map((p)=> categories = [...categories,...p.categories])
       categories = [...new Set(categories)]
@@ -33,6 +34,8 @@ export default function Products() {
   let cartIdsArray:Array<string> = []
  
   function getCartIds():Array<string>{
+    console.log("2 - getCartsId function")
+
     if(cart?.length !== 1){
       cart.map((c)=>cartIdsArray= [...cartIdsArray,c.id])
       setCartIds(cartIdsArray)
@@ -43,6 +46,8 @@ export default function Products() {
   }
   
   useEffect(()=>{
+    console.log("3 - useEffect1 function")
+    
     if(productsArray?.length > 1)return
       dispatch(getAllProducts())
     if(!user?.email){
@@ -55,6 +60,8 @@ export default function Products() {
   },[dispatch])
   
   useEffect(()=>{    
+    console.log("4 - useEffect2 function")
+
     getCategories()
     getCartIds()
   },[allProducts,dispatch,cart])
@@ -84,16 +91,13 @@ export default function Products() {
     e.preventDefault()
     dispatch(searchProduct(e.target.value))
   }
-  const handleAddQuantity = (id:string)=>{
-      
-        
+  const handleAddQuantity = (id:string)=>{         
     dispatch(addProductQuantity({id}))
-}
+  }
 
-const handleDeductQuantity = (id:string)=>{
-    
+  const handleDeductQuantity = (id:string)=>{    
     dispatch(deductProductQuantity({id}))
-}
+  }
 
 
   return (
