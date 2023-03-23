@@ -3,10 +3,12 @@ import { AxiosRequestConfig } from "axios";
 // import { useAppSelector,useAppDispatch } from "../redux/Hooks";
 import refreshToken from "../redux/reducer/User/Actions/refreshToken";
 
+
+
 const BASE_URL = 'http://localhost:5000'
 
 const axiosPriv = axios.create({
-    baseURL:BASE_URL,
+    baseURL:`${process.env.REACT_APP_BACK_URL}` || BASE_URL,
     headers:{'Content-Type': 'application/json'},
     withCredentials:true
 })
