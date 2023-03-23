@@ -103,7 +103,7 @@ const handleDeductQuantity = (id:string)=>{
         <select name="Category"  className={styles.filter_items} onChange={(e:any)=>handleCategory(e)}>
           <option value="default">Todas</option>
           {
-            categorie?.length > 0 ?  categorie.map(c=>(
+            categorie?.length > 0 ?  categorie?.map(c=>(
               <option value={c} key={c}>{c}</option>
             ))
             :null
@@ -127,7 +127,7 @@ const handleDeductQuantity = (id:string)=>{
         </div>
       </div>
       <div className={styles.products_wrapper}>
-        {productsArray && productsArray.map((p,i)=>(
+        {productsArray && productsArray?.map((p,i)=>(
           <div className={styles.products_cointainer} key={p.product_id}>
             <Link to={"/product/" + p.product_id}>              
               <span>{p.name}</span>
