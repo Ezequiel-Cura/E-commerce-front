@@ -74,7 +74,7 @@ export default function Home() {
               >
                 
             {            
-              featureProducts.length && featureProducts.map((p,i)=>(
+              featureProducts?.length && featureProducts.map((p,i)=>(
                 <SwiperSlide key={i}>
                   <div className={styles.p_wrapper}>
                       {/* <Link to={"/product/" + p.product_id }> */}
