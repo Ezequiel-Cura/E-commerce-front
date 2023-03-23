@@ -49,10 +49,17 @@ export default function Products() {
     console.log("3 - useEffect1 function")
     
     if(productsArray?.length > 1)return
+      console.log("3 - useEffect1 function 1")
       dispatch(getAllProducts())
+      console.log("3 - useEffect1 function 2")
+
     if(!user?.email){
+      console.log("3 - useEffect1 function 3")
+
       dispatch(getUserInfo())
       dispatch(getCartLocalStorage())
+      console.log("3 - useEffect1 function 4")
+
     }
     
     
