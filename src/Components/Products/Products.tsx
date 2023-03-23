@@ -23,7 +23,7 @@ export default function Products() {
   function getCategories ():Array<string>{
     console.log("1 - getCategories function")
     if(allProducts?.length !== 1){
-      allProducts.map((p)=> categories = [...categories,...p.categories])
+      allProducts?.map((p)=> categories = [...categories,...p.categories])
       categories = [...new Set(categories)]
       setCategories(categories)
       return categories
@@ -37,7 +37,7 @@ export default function Products() {
     console.log("2 - getCartsId function")
 
     if(cart?.length !== 1){
-      cart.map((c)=>cartIdsArray= [...cartIdsArray,c.id])
+      cart?.map((c)=>cartIdsArray= [...cartIdsArray,c.id])
       setCartIds(cartIdsArray)
       return cartIdsArray
     }else{
