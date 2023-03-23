@@ -21,7 +21,7 @@ export default function Products() {
 
   let categories:Array<string> = [];
   function getCategories ():Array<string>{
-    if(allProducts.length !== 1){
+    if(allProducts?.length !== 1){
       allProducts.map((p)=> categories = [...categories,...p.categories])
       categories = [...new Set(categories)]
       setCategories(categories)
@@ -33,7 +33,7 @@ export default function Products() {
   let cartIdsArray:Array<string> = []
  
   function getCartIds():Array<string>{
-    if(cart.length !== 1){
+    if(cart?.length !== 1){
       cart.map((c)=>cartIdsArray= [...cartIdsArray,c.id])
       setCartIds(cartIdsArray)
       return cartIdsArray
@@ -43,7 +43,7 @@ export default function Products() {
   }
   
   useEffect(()=>{
-    if(productsArray.length > 1)return
+    if(productsArray?.length > 1)return
       dispatch(getAllProducts())
     if(!user?.email){
       dispatch(getUserInfo())
@@ -144,7 +144,7 @@ const handleDeductQuantity = (id:string)=>{
             <div>
                             
               {
-                user?.email.length ? 
+                user?.email?.length ? 
                 cartIds.includes(p.product_id) ? (
                   <div key={p.product_id}>
                       <button onClick={()=>handleDeductQuantity(p.product_id)}>-</button>
