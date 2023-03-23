@@ -22,7 +22,7 @@ export default function Home() {
   const user = useAppSelector(state=> state.UserReducer.user)
   const {productsArray,allProducts} = useAppSelector(state=> state.Products)
 
-  const featureProducts = allProducts.filter((p)=> p.feature )
+  const featureProducts = allProducts && allProducts?.filter((p)=> p.feature )
  
   useEffect(()=>{
     if(!user?.email){
