@@ -56,8 +56,8 @@ export default function Products() {
     if(!user?.email){
       console.log("3 - useEffect1 function 3")
 
-      dispatch(getUserInfo())
-      dispatch(getCartLocalStorage())
+      dispatch(getUserInfo("test"))
+      // dispatch(getCartLocalStorage())
       console.log("3 - useEffect1 function 4")
 
     }
