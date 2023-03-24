@@ -7,7 +7,7 @@ const getAllProducts: any = createAsyncThunk("product/getAllProducts",
    async () => {
     try {
         const {data} = await axiosPriv.get("/Products")
-        console.log(data.products)
+        
         return data
     } catch (error:any) {
         return isRejectedWithValue(error.response.data)

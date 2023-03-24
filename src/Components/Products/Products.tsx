@@ -21,7 +21,7 @@ export default function Products() {
 
   let categories:Array<string> = [];
   function getCategories ():Array<string>{
-    console.log("1 - getCategories function")
+    
     if(allProducts?.length !== 1){
       allProducts?.map((p)=> categories = [...categories,...p.categories])
       categories = [...new Set(categories)]
@@ -34,7 +34,7 @@ export default function Products() {
   let cartIdsArray:Array<string> = []
  
   function getCartIds():Array<string>{
-    console.log("2 - getCartsId function")
+    
 
     if(cart?.length !== 1){
       cart?.map((c)=>cartIdsArray= [...cartIdsArray,c.id])
@@ -46,19 +46,19 @@ export default function Products() {
   }
   
   useEffect(()=>{
-    console.log("3 - useEffect1 function")
+    
     
     if(productsArray?.length > 1)return
-      console.log("3 - useEffect1 function 1")
+      
       dispatch(getAllProducts())
-      console.log("3 - useEffect1 function 2")
+      
 
     if(!user?.email){
-      console.log("3 - useEffect1 function 3")
+      
 
       dispatch(getUserInfo("test"))
       // dispatch(getCartLocalStorage())
-      console.log("3 - useEffect1 function 4")
+      
 
     }
     
@@ -67,7 +67,7 @@ export default function Products() {
   },[dispatch])
   
   useEffect(()=>{    
-    console.log("4 - useEffect2 function")
+    
 
     getCategories()
     getCartIds()
@@ -173,7 +173,7 @@ export default function Products() {
             </div>
           </div>
         ))
-        : (<h5>Products not found</h5>)
+        : (<h5>Productos no entonctrados</h5>)
       
       }
       </div>

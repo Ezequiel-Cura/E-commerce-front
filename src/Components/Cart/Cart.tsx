@@ -27,7 +27,7 @@ const Cart = ()=>{
             <h4>Tu Carrito</h4>
             <div className={styles.cart_products}>
                 {
-                    cart.map((c,i)=>(
+                    cart.length ? cart?.map((c,i)=>(
                         <div key={i} className={styles.products_properties}>
                             <div className={styles.image_wrapper}>
                             <Image 
@@ -43,6 +43,8 @@ const Cart = ()=>{
                             </div>
                         </div>
                     ))
+                    :
+                    (<h5>No hay productos agregador</h5>)
                 }
             </div>
             <div className={styles.btn_wrapper}>
