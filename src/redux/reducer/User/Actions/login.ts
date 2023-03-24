@@ -9,8 +9,7 @@ const login:any = createAsyncThunk("user/login",
             const {data} = await axiosPriv.post("/auth/login",user_obj,{
                 withCredentials:true
             })
-            console.log(user_obj)
-            console.log("data",data)
+            
             return data
         } catch (error:any) {
             return rejectWithValue(error.response.data)

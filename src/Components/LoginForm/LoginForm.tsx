@@ -21,10 +21,10 @@ const LoginForm:FC<loginFormI> = ({setOpen})=> {
         email: yup.string().email("Ese email no existe").required("Tu email es requerido"),
         password: yup.string().min(5,"Too short").required("Password required")
       })
-      console.log(loginSchema)
+      
 
       const handleSubmit = async(values:loginForm,submitProps:any)=>{
-        console.log("holaaaaaaaaa")
+        
         const res = await dispatch(login(values))
         
         if(!res?.error?.message?.length){

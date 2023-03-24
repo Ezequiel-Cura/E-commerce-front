@@ -26,7 +26,7 @@ const AdmingPage = ()=>{
         const obj = {
             product_id:id,
             product_value: {
-                feature:!feature
+                feature: true
             }
         }
         dispatch(updateProduct(obj))
