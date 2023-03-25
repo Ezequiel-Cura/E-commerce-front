@@ -13,6 +13,7 @@ import {Swiper,SwiperSlide} from "swiper/react"
 import {Pagination,Navigation,Thumbs} from "swiper"
 import "swiper/css";
 import "swiper/css/pagination";
+import { getCartLocalStorage, setCart } from '../../redux/reducer/webPage/webPageReducer';
 
 export default function Home() {
   // const axiosPrivate = useAxiosPrivate();
@@ -31,6 +32,9 @@ export default function Home() {
     if(allProducts.length === 1){
 
       dispatch(getAllProducts())
+    }
+    if(!localStorage.getItem("cart")?.length){
+      setCart()
     }
   },[dispatch])
 

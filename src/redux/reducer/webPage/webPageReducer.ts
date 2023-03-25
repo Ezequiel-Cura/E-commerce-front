@@ -20,6 +20,9 @@ const reducerSlice = createSlice({
     name:"webPage",
     initialState,
     reducers:{
+        setCart:(state)=>{
+            localStorage.setItem("cart",JSON.stringify(state.cart))
+        },
         addProduct:(state,action:PayloadAction<productInCart>)=>{
             if(state.cart.find(c=>c.id === action.payload.id)){
                 let foundIndex = state.cart.findIndex(c=> c.id === action.payload.id)
@@ -73,6 +76,6 @@ const reducerSlice = createSlice({
     }
 })
 
-export const {addProduct,deleteProduct,addProductQuantity,deductProductQuantity,getCartLocalStorage} = reducerSlice.actions
+export const {addProduct,deleteProduct,addProductQuantity,deductProductQuantity,getCartLocalStorage,setCart} = reducerSlice.actions
 
 export default reducerSlice.reducer

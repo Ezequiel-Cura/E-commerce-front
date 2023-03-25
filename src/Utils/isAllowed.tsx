@@ -24,7 +24,7 @@ const IsAllowed = ()=>{
     //     callUser()
     // },[dispatch])
 
-    if(user.email.length){
+    if(user?.email?.length){
         return <Outlet/>
     }else{
         return <Navigate to={"/Home"}   />
