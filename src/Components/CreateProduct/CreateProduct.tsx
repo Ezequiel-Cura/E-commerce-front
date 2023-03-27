@@ -132,83 +132,100 @@ const CreateProduct = ()=>{
         <div>
             <h4>Create a Product</h4>
             <form onSubmit={handleOnSubmit}  className={styles.form} encType="multipart/form-data" >
-                <label>Name:</label>
-                <input 
-                    type="text"
-                    placeholder="Product name..." 
-                    name="name"
-                    value={allFormData.name}
-                    onChange={setFormDataState}
-                />
+                <div>
+                    <div>
+                        <label>Name:</label>
+                        <input 
+                            type="text"
+                            placeholder="Product name..." 
+                            name="name"
+                            value={allFormData.name}
+                            onChange={setFormDataState}
+                        />
+                    </div>
 
-                {/* {errors.name && <span>Name is required</span>} */}
-                
-                <label>stock:</label>
-                <input 
-                    type="number" 
-                    name="stock"
-                    value={allFormData.stock}
-                    onChange={setFormDataState}
-                />
+                    {/* {errors.name && <span>Name is required</span>} */}
+                    <div>
+                        <label>stock:</label>
+                        <input 
+                            type="number" 
+                            name="stock"
+                            value={allFormData.stock}
+                            onChange={setFormDataState}
+                        />
+                    </div>
+                </div>
 
-                <label>Price:</label>
-                <input 
-                    type="number" 
-                    name="product_price"
-                    value={allFormData.product_price}
-                    onChange={setFormDataState}
-                />
-                
-
-                <label>Presentation:</label>
-                <input 
-                    type="text" 
-                    name="presentation" 
-                    value={allFormData.presentation}
-                    onChange={setFormDataState}
+                <div>
+                    <div>
+                        <label>Price:</label>
+                        <input 
+                            type="number" 
+                            name="product_price"
+                            value={allFormData.product_price}
+                            onChange={setFormDataState}
+                        />
+                    </div>
                     
-                />
-
-                <label>Categories:</label>
-                <input 
-                    type="text" 
-                    name="categories"
-                    ref={inputCategories}
-                />
-                <button onClick={()=>handleClickCategories()} type="button">ADD</button>
-                <div>
-                    {allFormData.categories?.length > 0? (
-                        allFormData.categories.map((categ,index)=>(
-                            <span key={index}>{categ}</span>
-                        ))
-                        )
-                    : null}
+                    <div>
+                        <label>Presentation:</label>
+                        <input 
+                            type="text" 
+                            name="presentation" 
+                            value={allFormData.presentation}
+                            onChange={setFormDataState}                        
+                        />
+                    </div>
                 </div>
 
-                
-                <label>Variants:</label>
-                <input 
-                    type="text" 
-                    name="variants"
-                    ref={inputVariants}
-                />
-                <button onClick={()=>handleClickVariants()} type="button">ADD</button>
                 <div>
-                    { variants && variants.length > 0? (
-                        variants?.map((variants,index)=>(
-                            <span key={index} id={`${index}`}>{variants}</span>
-                        ))
-                        )
-                    : null}
+                    <div>
+                        <label>Categories:</label>
+                        <input 
+                            type="text" 
+                            name="categories"
+                            ref={inputCategories}
+                        />
+                        <button onClick={()=>handleClickCategories()} type="button">ADD</button>
+                        <div>
+                            {allFormData.categories?.length > 0? (
+                                allFormData.categories.map((categ,index)=>(
+                                    <span key={index}>{categ} - </span>
+                                ))
+                                )
+                            : null}
+                        </div>
+                    </div>                
+
+                    <div>
+                        <label>Variants:</label>
+                        <input 
+                            type="text" 
+                            name="variants"
+                            ref={inputVariants}
+                        />
+                        <button onClick={()=>handleClickVariants()} type="button">ADD</button>
+                        <div>
+                            { variants && variants.length > 0? (
+                                variants?.map((variants,index)=>(
+                                    <span key={index} id={`${index}`}>{variants} - </span>
+                                ))
+                                )
+                            : null}
+                        </div>
+                    </div>
                 </div>
-               
-                <label>Image: </label>
-                <input 
-                    type="file" 
-                    name="product_image" 
-                    onChange={(e)=>previewSource(e.target.files)}
-                />
-                {previewImage ? <img src={previewImage} alt="img"/> : null}
+
+
+                <div>
+                    <label>Image: </label>
+                    <input 
+                        type="file" 
+                        name="product_image" 
+                        onChange={(e)=>previewSource(e.target.files)}
+                    />
+                    {previewImage ? <img src={previewImage} alt="img" className={styles.preview_img} /> : null}
+                </div>
                         
                 {/* <label></label>
                 <input type="text" /> */}
