@@ -40,8 +40,8 @@ const CreateProduct = ()=>{
     })
     //REACT HOOK FORM
     // if(productState.status === "failed")console.log("NO ENVIO NADA AL BACK")
-    let aksldjf = ""
-    console.log(aksldjf.length)
+    
+    
     const handleOnSubmit = async(e:any)=>{
         e.preventDefault()
         validat()
@@ -49,13 +49,13 @@ const CreateProduct = ()=>{
         allFormData.categories_string = JSON.stringify(allFormData.categories)
         allFormData.product_image = image
         allFormData.variants = JSON.stringify(variants) || ""
-        console.log("OBJECT",allFormData)
+        // console.log("OBJECT",allFormData)
         
         const errors = validate(allFormData)
-        console.log("ERRORS",errors)
+        // console.log("ERRORS",errors)
         if(Object.keys(errors).length === 0){
             const res = await dispatch(createProduct(allFormData))
-            console.log(res.error.message)
+            // console.log(res.error.message)
             if(res?.error?.message === "Rejected")return
             setAllFormData({
                 name:"",
@@ -69,7 +69,7 @@ const CreateProduct = ()=>{
             })
 
         }else{
-            console.log("No se hizo el envio")
+            // console.log("No se hizo el envio")
         }
     }
     
@@ -86,7 +86,7 @@ const CreateProduct = ()=>{
 
     const validat =async ()=>{
         const productValidate = await productSchema.validate(allFormData)
-        console.log("VALUE YUP",productValidate)
+        // console.log("VALUE YUP",productValidate)
     }   
 
 
@@ -99,7 +99,7 @@ const CreateProduct = ()=>{
             [event.target?.name] : event.target?.value 
         })
 
-        console.log(allFormData)
+        // console.log(allFormData)
     }
     // SETTING CATEGORIES
     const handleClickCategories = ()=>{
@@ -117,7 +117,7 @@ const CreateProduct = ()=>{
         // setCategories([...categories,inputCategories.current.value])
         setVariants([...variants || [],inputVariants.current.value])
         inputVariants.current.value = ""
-        console.log(variants)
+        // console.log(variants)
     }
     const previewSource = (file:any)=>{
         const imagefile = file[0]
