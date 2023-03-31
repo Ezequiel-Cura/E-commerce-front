@@ -12,7 +12,8 @@ import Footer from './Components/Footer/Footer';
 import Products from './Components/Products/Products';
 import CreateProduct from './Components/CreateProduct/CreateProduct';
 import ProductDetail from './Components/ProductDetail/ProductDetail';
-
+import Promociones from './Components/Promociones/Promociones';
+import Recetas from './Components/Recetas/Recetas';
 import IsAllowed from './Utils/isAllowed';
 
 import UserPage from './Components/UserPage/UserPage';
@@ -30,6 +31,8 @@ function App() {
         <Route path='/Home' element={<Home/>}/>
         <Route path='/products' element={<Products/>}/>
         <Route path="/product/:id" element={<ProductDetail/>}/>
+        <Route path='/promociones' element={<Promociones/>}/>
+        <Route path='/recetas' element={<Recetas/>}/>
 
         <Route element={<IsAllowed />}>
           <Route path='/profile' element={<UserPage/>}/>

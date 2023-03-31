@@ -162,10 +162,10 @@ const NavBar:FC=()=> {
         <Link to="/products">
           <span>Productos</span>
         </Link>
-        <Link to="promotions">
+        <Link to="/promociones">
           <span>Promociones</span>
         </Link>
-        <Link to="/recipes">
+        <Link to="/recetas">
           <span>Recetas</span>
         </Link>
       </div>
