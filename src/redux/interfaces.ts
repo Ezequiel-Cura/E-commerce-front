@@ -45,7 +45,8 @@ interface productStructure{
     id:string,
     name:string,
     quantity:number,
-    img:string
+    img:string,
+    price:number
 }
 
 export interface Iusers{
@@ -72,5 +73,6 @@ export interface Iusers{
 export interface productInCart {
     id:string,
     name:string,
-    img:string
+    img:string,
+    price:number
 }

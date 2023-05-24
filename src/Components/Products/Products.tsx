@@ -73,8 +73,8 @@ export default function Products() {
     getCartIds()
   },[allProducts,dispatch,cart])
 
-  const handleClickAdd = (name:string,id:string,img:string)=>{
-    dispatch(addProduct({id,name,img}))
+  const handleClickAdd = (name:string,id:string,img:string,price:number)=>{
+    dispatch(addProduct({id,name,img,price}))
   }
 
   const handleChangeAZ = (e:React.ChangeEvent<HTMLInputElement>)=>{
@@ -144,8 +144,8 @@ export default function Products() {
             <Link to={"/product/" + p.product_id}>              
               <span>{p.name}</span>
             </Link>
-            {/* <span>Price: {p.product_price}</span>
-            <span>Stock: {p.stock} </span> */}
+            <span>Price: {p.product_price}</span>
+            {/* <span>Stock: {p.stock} </span>  */}
             <span>Presentacion:{p.presentation} </span> 
             <span>Categorias: {p.categories && p.categories.join(" - ")}</span>
             {/* <span>Variants: {p.variants && p.variants.join("/")}</span> */}
@@ -165,7 +165,7 @@ export default function Products() {
                   </div>
                 )
                 :(
-                  <button key={p.product_id} disabled={user?.email ? false : true} onClick={()=>handleClickAdd(p.name,p.product_id,p.product_image)} className={styles.btn_add}>Agregar</button>
+                  <button key={p.product_id} disabled={user?.email ? false : true} onClick={()=>handleClickAdd(p.name,p.product_id,p.product_image,p.product_price)} className={styles.btn_add}>Agregar</button>
                 )
                 :null
 

@@ -9,6 +9,7 @@ import getUserInfo from "./Actions/getUserInfo";
 import login from "./Actions/login";
 import logOut from "./Actions/logout";
 import timerPopUps from "./Actions/timerPopUps";
+import checkoutStripe from "./Actions/checkoutStripe";
 
 
 const initialState:Iusers = {
@@ -99,6 +100,15 @@ const reducerSlice = createSlice({
         [logOut.rejected]:(state,{payload})=>{
             state.status = "failed";
         },
+        [checkoutStripe.pending]:(state,{payload})=>{
+            state.status = "loading"
+        },
+        [checkoutStripe.fulfilled]:(state,{payload})=>{
+            state.status = "fulfilled"
+        },
+        [checkoutStripe.rejected]:(state,{payload})=>{
+            state.status = "failed"
+        }
     }
 
 })

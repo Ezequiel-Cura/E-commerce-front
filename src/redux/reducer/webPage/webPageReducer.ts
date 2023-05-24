@@ -32,7 +32,8 @@ const reducerSlice = createSlice({
                     name:action.payload.name,
                     id: action.payload.id,
                     quantity: 1,
-                    img:action.payload.img
+                    img:action.payload.img,
+                    price: action.payload.price
                 })
                 
             }
@@ -71,11 +72,17 @@ const reducerSlice = createSlice({
             }
         },
         getCartLocalStorage:(state)=>{
-            state.cart = JSON.parse(localStorage.getItem("cart") || "")
+            if(localStorage.getItem("cart")){
+                state.cart = JSON.parse(localStorage.getItem("cart") || "")
+            }
+        },
+        cleanCart:(state)=>{
+            state.cart = []
+            localStorage.removeItem("cart")
         }
     }
 })
 
-export const {addProduct,deleteProduct,addProductQuantity,deductProductQuantity,getCartLocalStorage,setCart} = reducerSlice.actions
+export const {addProduct,deleteProduct,addProductQuantity,deductProductQuantity,getCartLocalStorage,setCart,cleanCart} = reducerSlice.actions
 
 export default reducerSlice.reducer

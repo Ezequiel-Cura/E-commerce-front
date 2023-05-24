@@ -14,11 +14,11 @@ import CreateProduct from './Components/CreateProduct/CreateProduct';
 import ProductDetail from './Components/ProductDetail/ProductDetail';
 import Promociones from './Components/Promociones/Promociones';
 import Recetas from './Components/Recetas/Recetas';
-import IsAllowed from './Utils/isAllowed';
-
 import UserPage from './Components/UserPage/UserPage';
 import Cart from './Components/Cart/Cart';
 import AdmingPage from './Components/Admin/AdminPage';
+import CheckoutSuccess from './Components/CheckoutSuccess/CheckoutSuccess';
+import IsAllowed from './Utils/isAllowed';
 
 function App() {
   
@@ -33,6 +33,7 @@ function App() {
         <Route path="/product/:id" element={<ProductDetail/>}/>
         <Route path='/promociones' element={<Promociones/>}/>
         <Route path='/recetas' element={<Recetas/>}/>
+        <Route path="/checkout-success" element={<CheckoutSuccess/>}/>
 
         <Route element={<IsAllowed />}>
           <Route path='/profile' element={<UserPage/>}/>
