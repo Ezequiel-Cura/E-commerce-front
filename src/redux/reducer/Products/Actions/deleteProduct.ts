@@ -2,10 +2,11 @@ import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
 import axiosPriv from "../../../../api/axios";
 
 const deleteProduct:any = createAsyncThunk("product/delete",
-    async(product_id,{rejectWithValue})=>{
+    async(obj:any,{rejectWithValue})=>{
         try {
             
-            const {data} = await axiosPriv.delete("/Product/" + product_id)
+            let img = obj.image.split("/")
+            const {data} = await axiosPriv.delete("/Product/" + obj.id + "&" + img.join("_") )
 
         } catch (error:any) {
             console.log("ACTION",error)

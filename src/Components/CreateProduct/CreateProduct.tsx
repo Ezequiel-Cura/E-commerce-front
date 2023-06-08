@@ -56,7 +56,6 @@ const CreateProduct = ()=>{
         if(Object.keys(errors).length === 0){
             const res = await dispatch(createProduct(allFormData))
             // console.log(res.error.message)
-            if(res?.error?.message === "Rejected")return
             setAllFormData({
                 name:"",
                 stock:0,
@@ -67,7 +66,8 @@ const CreateProduct = ()=>{
                 categories_string:"",
                 variants:""
             })
-
+            setPreviewImage("")
+            if(res?.error?.message === "Rejected")return
         }else{
             // console.log("No se hizo el envio")
         }
@@ -80,8 +80,8 @@ const CreateProduct = ()=>{
         categories_strgin:yup.string(),
         stock:yup.number(),
         product_price:yup.number(),
-        categories:yup.array(),
-        product_image:yup.object().required()
+        categories:yup.array()
+        
     })
 
     const validat =async ()=>{

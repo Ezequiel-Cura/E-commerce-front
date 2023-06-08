@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 const IsAllowed = ()=>{
     const dispatch = useAppDispatch()
-    const user = useAppSelector((state)=> state.UserReducer.user)
+    const {user,status} = useAppSelector((state)=> state.UserReducer)
     // const [allow,setAllow] = useState(true)
     // useEffect(()=>{
     //     const callUser = async()=>{
@@ -23,6 +23,10 @@ const IsAllowed = ()=>{
     //     }
     //     callUser()
     // },[dispatch])
+    
+    // if(status === "loading"){
+    //     return <h1>Wait</h1>
+    // }
 
     if(user?.email?.length){
         return <Outlet/>
